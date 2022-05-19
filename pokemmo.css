@@ -1,0 +1,992 @@
+/* COLOR
+#7ed56f
+#55c57a
+#28b485
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+
+
+
+    /* 网页周围都空出来30padding的空间 留白 */
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, hsla(111, 55%, 64%, 0.35), hsla(160, 64%, 43%, 0.65)), url(../../图片/liekongzuo.png);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*   移到最左上角translate */
+    text-align: center;
+    /* 让button居中 因为inline-block有文本的属性 */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+    /* 让动画不再动摇 */
+}
+
+.heading-primary-main {
+    display: block;
+    /* 块级元素好占据他整个行的块还能换行 */
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    /* animation: iteration-count:;   出现次数*/
+    /* animation-delay: 3s;  延迟 */
+    /* animation-timing-function: ;  缓出缓入 */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 17.4px;
+    animation-name: moveInRight;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+
+    /* 用padding指定大小 */
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+
+.btn::after {
+    content: "";
+    /* 内容要有且为空 */
+    display: inline-block;
+    /* 和父亲一样inline-block  下面属性也和父亲一样 */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    /* 相对定位在.btn：linkvisited上 */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* 一开始隐藏 动画将在应用于目标时立即应用第一个关键帧中定义的值，\
+    并在animation-delay期间保留此值。 
+    第一个关键帧取决于animation-direction的值：*/
+}
+
+
+/* 222222222222222 ************************************************************************************************************/
+.section-about {
+    background-color: #f7f7f7;
+    padding: 250px 0;
+    margin-top: -20vh;
+    padding-bottom: 150px;
+
+
+}
+
+.heading-secondary {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent;
+    /* 背景颜色剪裁到文字上 */
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    margin-bottom: 50px;
+
+
+}
+
+.u-center-text {
+    text-align: center;
+}
+
+.heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* 抖动上下 */
+    text-shadow: 5px 10px 20px rgba(0, 0, 0, .2);
+}
+
+
+.row {
+    max-width: 1140px;
+    /* background-color: rgb(238, 238, 238); */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* 
+/* .row:not(:last-child) {
+    margin-bottom: 80px;
+}
+
+.row .col-1-of-2 {
+    width: calc((100%-20px)/2);
+    background-color: orangered;
+    padding: 50px;
+
+}
+
+.row .col-1-of-2:not(:last-child) {
+    margin-right: 20px;
+}
+
+
+.row .col-1-of-3 {
+    width: calc((100%-40px)/3);
+    background-color: orangered;
+
+    .row .col-1-of-4 {
+        width: calc((100%-60px)/4);
+        padding:50px;
+
+} */
+.btn-text:link,
+.btn-text:visited {
+    text-decoration: none;
+    color: #7ed56f;
+    display: inline-block;
+    border-bottom: 2px solid #7ed56f;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-text:hover,
+.btn-text:active {
+    background-color: #28b485;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transform: translateY(-3px);
+    padding: 5px;
+
+}
+
+
+
+
+.row-text {
+    padding: 38px;
+    padding-right: 50px;
+    position: relative;
+}
+
+.heading-tertiary {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.paragraph {
+    font-size: 16px;
+
+}
+
+.paragraph:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+
+.row-img-img {
+    position: relative;
+}
+
+.row-img-img img {
+    width: 45%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    margin-top: 100px;
+    outline-offset: 15px;
+    /* 边框往外宰 */
+}
+
+.a {
+    left: 0;
+    top: -20px;
+}
+
+.b {
+    right: 0;
+    top: 20px;
+
+}
+
+.c {
+    left: 20%;
+    top: 100px;
+}
+
+.row-img-img .c:hover {
+    transform: scale(1.1);
+    box-shadow: 0 25rem 40rem rgba(0, 0, 0, .5);
+    outline: 10px solid #6fccd5;
+    transition: all 0.3s;
+    z-index: 20;
+}
+
+.row-img-img .b:hover {
+    transform: scale(1.1);
+    box-shadow: 0 25rem 40rem rgba(0, 0, 0, .5);
+    outline: 10px solid #e60b0b;
+    transition: all 0.3s;
+    z-index: 20;
+}
+
+.row-img-img .a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 25rem 40rem rgba(0, 0, 0, .5);
+    outline: 10px solid #7ed56f;
+    transition: all 0.3s;
+    z-index: 20;
+}
+
+/* 222222222222222222 */
+
+
+/* 3333333333333 *******************************************************************************************************************************/
+.row-feature {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 160px;
+    padding-right: 160px;
+    gap: 50px;
+
+
+
+
+}
+
+
+.section-features {
+    padding: 200px 0;
+    background-image: linear-gradient(to right bottom, hsla(44, 100%, 50%, 0.262), #ff7830a6), url(../../图片/ポケモンと廃墟探索-92238308-4.png);
+    background-size: cover;
+    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    background-color: #f7f7f7;
+    margin-top: -95px;
+
+
+}
+
+
+
+.feature-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    padding: 25px;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+}
+
+.feature-icon {
+    margin-bottom: 15px;
+    width: 70px;
+    height: 70px;
+    color: #7ed56f;
+}
+
+
+.feature-box:hover {
+    transform: translateY(-15px) scale(1.05);
+    transition: all 0.3s;
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+/* 333333333333333******************************************* */
+
+
+/* 444444444444444444444444444444444444444444444444444444444 */
+
+
+.section-tours {
+    padding: 200px 0 150px 0;
+    background-color: #f7f7f7;
+    margin-top: -120px;
+}
+
+.row-tours {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding: 180px;
+    margin-top: -120px;
+
+
+
+
+}
+
+.card1,
+.card2,
+.card3 {
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+}
+
+.card1:hover,
+.card2:hover,
+.card3:hover {
+    transform: translateY(10px) scale(0.8);
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+
+.card-picture1 {
+    background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../图片/微信图片_guladuo.jpg);
+    background-size: cover;
+    height: 230px;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.card-heading {
+    font-size: 26px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    text-align: right;
+    width: 75%;
+    letter-spacing: 3px;
+
+}
+
+.card-details {
+    padding: 30px;
+}
+
+.card-details ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card-details li {
+    text-align: center;
+    font-size: 17px;
+    padding: 10px;
+    border-bottom: 3px solid #eee;
+
+
+}
+
+.span1 {
+    background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+    padding: 10px 15px;
+
+}
+
+.card-picture2 {
+    background-image: linear-gradient(to right bottom, #55c57a, #28b485), url(../../图片/微信图片_lie.jpg);
+    background-size: cover;
+    height: 230px;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.span2 {
+    background-image: linear-gradient(to right bottom, #55c57a, #28b485);
+    padding: 10px 15px;
+
+}
+
+.card-picture3 {
+    background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../图片/微信图片_gai.jpg);
+    background-size: cover;
+    height: 230px;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.span3 {
+    background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+    padding: 10px 15px;
+}
+
+.card-btn {
+    margin-top: -80px;
+    text-align: center;
+
+}
+
+.card-btn .btn:link,
+.card-btn .btn:visited {
+    background-color: #55c57a;
+    color: #eee;
+
+}
+
+
+.btn::after {
+    content: "";
+    /* 内容要有且为空 */
+    display: inline-block;
+    /* 和父亲一样inline-block  下面属性也和父亲一样 */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    /* 相对定位在.btn：linkvisited上 */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-green::after {
+    background-color: #28b485;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* 一开始隐藏 动画将在应用于目标时立即应用第一个关键帧中定义的值，\
+    并在animation-delay期间保留此值。 
+    第一个关键帧取决于animation-direction的值：*/
+}
+
+
+
+
+
+/* 444444444444444444444444444444444444444444444444444444444444444 */
+
+/* 5555555555555555555555555555555555555555555555555555555555555555555555555*********************************** */
+
+.section-stories {
+    padding: 150px 0;
+    padding-bottom: 10px;
+    background-image: linear-gradient(to right bottom, hsla(209, 100%, 58%, 0.467), hsla(246, 95%, 62%, 0.396)), url(../../图片/ポケモンと一緒に海中探索-82847627-0.png);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+    position: relative;
+    margin-top: -105px;
+
+}
+
+.row-story {
+    padding: 50px;
+}
+
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .1);
+    border-color: #fff;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 60px;
+    padding-left: 90px;
+    /* transform: skewX(-2deg); */
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.story-shape {
+    width: 150px;
+    height: 150px;
+    float: left;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-30px);
+    /* 做圆形 半径是高度的二分之一 水平 垂直 */
+    position: relative;
+
+}
+
+
+.caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 17px;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+}
+
+.story:hover .caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+
+.story-shape img {
+    width: 100%;
+
+    height: 100%;
+    /* backface-visibility: hidden; */
+    /* 搞不定 的就用这个 */
+    transition: all .5s;
+
+}
+
+.story:hover .story-shape img {
+    filter: blur(3px);
+}
+
+.story-text {}
+
+.aaa {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+    overflow: hidden;
+
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.dada {
+    padding: 50px;
+}
+
+/* ************************************************************************************************************** */
+
+
+
+/* 5666666666666666666 6666666666666666666666666666666666*/
+.section-footer {
+
+    background-color: rgba(62, 61, 61, 0.6);
+    padding-bottom: 80px;
+}
+
+.footer-logo {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 60px;
+
+}
+
+.footer-logo-end {
+    width: 170px;
+}
+
+
+.footer-end {
+    padding-left: 100px;
+    padding-right: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+
+
+.copy {
+    border-top: 1px solid #e6e6e6;
+    width: 450px;
+    margin-top: 35px;
+    padding: 10px;
+    color: #f7f7f7;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+
+}
+
+.register h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: #f7f7f7;
+
+
+}
+
+.copyright h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: #f7f7f7;
+    margin-bottom: 35px;
+}
+
+.copyright p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e6e6e6;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+}
+
+.copyright svg {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.tt {
+    margin-top: 40px;
+}
+
+
+.register .btn2 {
+    margin-left: 100px;
+
+
+
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    color: #e6e6e6;
+}
+
+.register .name {
+
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px;
+
+
+
+}
+
+.sug {
+    padding-right: 450px;
+    padding-bottom: 100px;
+    border-radius: 10px;
+}
+
+.bbb:link,
+.bbb:visited {
+    text-decoration: none;
+    color: #777;
+    background-color: #e6e6e6;
+    padding: 15px 25px;
+    border-radius: 15px;
+    display: inline-block;
+
+}
+
+.bbb:hover,
+.bbb:active {
+    text-decoration: none;
+    color: #777;
+    background-color: #e6e6e6;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transform: scale(1.2);
+    transition: all 0.3s;
+    transform: translateY(-10px);
+
+}
+
+/* 666666666666666666666666666666666666666666666666 */
+
+
+.heading-huo {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, #ffb900, #ff7730);
+    -webkit-background-clip: text;
+    color: transparent;
+    /* 背景颜色剪裁到文字上 */
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    margin-bottom: 50px;
+
+
+}
+
+.heading-huo:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* 抖动上下 */
+    text-shadow: 5px 10px 20px rgba(0, 0, 0, .2);
+}
+
+
+
+.heading-shui {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, #02498c, #100573);
+    -webkit-background-clip: text;
+    color: transparent;
+    /* 背景颜色剪裁到文字上 */
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    margin-bottom: 50px;
+
+
+}
+
+
+.heading-shui:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* 抖动上下 */
+    text-shadow: 5px 10px 20px rgba(0, 0, 0, .2);
+}
+
+
+.btn-blue:link,
+.btn-blue:visited {
+    text-decoration: none;
+    color: hsl(246, 100%, 21%);
+    display: inline-block;
+    border-bottom: 2px solid hsl(246, 97%, 15%);
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-blue:hover,
+.btn-blue:active {
+    background-color: hsl(246, 98%, 18%);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transform: translateY(-3px);
+    padding: 5px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-red:link,
+.btn-red:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+
+    /* 用padding指定大小 */
+}
+
+.btn-red:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn-red:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-red {
+    background-color: rgb(10, 141, 193);
+    color: #fff;
+}
+
+
+.btn-red::after {
+    content: "";
+    /* 内容要有且为空 */
+    display: inline-block;
+    /* 和父亲一样inline-block  下面属性也和父亲一样 */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    /* 相对定位在.btn：linkvisited上 */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-red::after {
+    background-color: rgb(0, 117, 190);
+}
+
+.btn-red:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-red {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* 一开始隐藏 动画将在应用于目标时立即应用第一个关键帧中定义的值，\
+    并在animation-delay期间保留此值。 
+    第一个关键帧取决于animation-direction的值：*/
+}
